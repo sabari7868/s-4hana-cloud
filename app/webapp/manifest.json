@@ -1,0 +1,50 @@
+{
+  "sap.app": {
+    "id": "demo.shoppingcart",
+    "type": "application",
+    "title": "Shopping Cart",
+    "i18n": "i18n/i18n.properties"
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "rootView": {
+      "viewName": "demo.shoppingcart.view.Main",
+      "type": "XML",
+      "async": true,
+      "id": "main"
+    },
+    "dependencies": {
+      "minUI5Version": "1.120.0",
+      "libs": {
+        "sap.m": {}
+      }
+    },
+    "models": {
+      "": {
+        "dataSource": "mainService",
+        "settings": {
+          "useBatch": true
+        }
+      },
+      "cart": {
+        "type": "sap.ui.model.json.JSONModel"
+      }
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ESHOP_CART_SRV/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "shoppingcart-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "ui5 serve -o index.html",
+    "build": "ui5 build --all"
+  },
+  "devDependencies": {
+    "@ui5/cli": "^4"
+  }
+}

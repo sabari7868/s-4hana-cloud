@@ -1,0 +1,13 @@
+{
+  "welcomeFile": "index.html",
+  "authenticationMethod": "route",
+  "routes": [
+    {
+      "source": "^/sap/opu/odata/sap/ESHOP_CART_SRV/(.*)$",
+      "target": "/sap/opu/odata/sap/ESHOP_CART_SRV/$1",
+      "destination": "S4HANA_SHOPPING",
+      "authenticationType": "xsuaa",
+      "csrfProtection": false
+    }
+  ]
+}

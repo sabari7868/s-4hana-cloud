@@ -1,0 +1,12 @@
+{
+  "xsappname": "shoppingcart-ui5-cf",
+  "authorities": [
+    "$XSAPPNAME.Display"
+  ],
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.Display",
+      "description": "Display application"
+    }
+  ]
+}

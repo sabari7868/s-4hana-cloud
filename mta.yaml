@@ -1,0 +1,48 @@
+
+ID: shoppingcart-ui5-cf
+_schema-version: '3.2'
+version: 1.0.0
+
+modules:
+  - name: shoppingcart-approuter
+    type: approuter.nodejs
+    path: approuter
+    parameters:
+      memory: 256M
+      disk-quota: 256M
+    requires:
+      - name: shoppingcart-html5-repo-rt
+      - name: shoppingcart-destination
+      - name: shoppingcart-xsuaa
+
+  - name: shoppingcart-app
+    type: html5
+    path: app
+    build-parameters:
+      builder: custom
+      commands:
+        - npm ci
+        - npx ui5 build --all
+      supported-platforms: []
+    requires:
+      - name: shoppingcart-html5-repo-rt
+
+resources:
+  - name: shoppingcart-html5-repo-rt
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-runtime
+
+  - name: shoppingcart-destination
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: destination
+      service-plan: lite
+
+  - name: shoppingcart-xsuaa
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: xsuaa
+      service-plan: application
+      path: ./xs-security.json

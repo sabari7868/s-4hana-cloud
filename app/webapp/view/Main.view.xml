@@ -1,0 +1,51 @@
+
+<mvc:View
+  xmlns:mvc="sap.ui.core.mvc"
+  xmlns="sap.m"
+  controllerName="demo.shoppingcart.controller.Main">
+
+  <Page title="Shopping Cart (Live ERP)">
+    <subHeader>
+      <Toolbar>
+        <SearchField width="100%" liveChange=".onSearch"/>
+        <ToolbarSpacer/>
+        <Button text="Cart: {cart>/items.length}" icon="sap-icon://cart" press=".onOpenCart"/>
+      </Toolbar>
+    </subHeader>
+
+    <content>
+      <Table id="productsTable" items="{/Products}">
+        <headerToolbar>
+          <Toolbar>
+            <Title text="Products"/>
+            <ToolbarSpacer/>
+            <Button text="Refresh" press=".onRefresh"/>
+          </Toolbar>
+        </headerToolbar>
+        <columns>
+          <Column width="40%"><Text text="Product"/></Column>
+          <Column width="20%"><Text text="Price"/></Column>
+          <Column width="20%"><Text text="Currency"/></Column>
+          <Column width="20%"><Text text=" "/></Column>
+        </columns>
+        <items>
+          <ColumnListItem>
+            <cells>
+              <ObjectIdentifier title="{ProductName}" text="{ProductID}"/>
+              <ObjectNumber number="{Price}" />
+              <Text text="{CurrencyCode}"/>
+              <Button text="Add" type="Emphasized" press=".onAddToCart"/>
+            </cells>
+          </ColumnListItem>
+        </items>
+      </Table>
+    </content>
+
+    <footer>
+      <Toolbar>
+        <ToolbarSpacer/>
+        <Button text="Checkout" type="Accept" press=".onCheckout"/>
+      </Toolbar>
+    </footer>
+  </Page>
+</mvc:View>
